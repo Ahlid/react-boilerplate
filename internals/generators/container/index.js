@@ -119,10 +119,18 @@ module.exports = {
       // Actions
       actions.push({
         type: 'add',
-        path: '../../app/containers/{{properCase name}}/actions/actions.js',
+        path: '../../app/containers/{{properCase name}}/actions/sync.js',
         templateFile: './container/actions.js.hbs',
         abortOnFail: true,
       });
+
+      actions.push({
+        type: 'add',
+        path: '../../app/containers/{{properCase name}}/actions/index.js',
+        templateFile: './container/actionIndex.js.hbs',
+        abortOnFail: true,
+      });
+
       if (data.wantTests) {
         actions.push({
           type: 'add',
@@ -144,7 +152,7 @@ module.exports = {
       // Selectors
       actions.push({
         type: 'add',
-        path: '../../app/containers/{{properCase name}}/selectors/index.js',
+        path: '../../app/containers/{{properCase name}}/selectors.js',
         templateFile: './container/selectors.js.hbs',
         abortOnFail: true,
       });
@@ -160,7 +168,7 @@ module.exports = {
       // Reducer
       actions.push({
         type: 'add',
-        path: '../../app/containers/{{properCase name}}/reducer/index.js',
+        path: '../../app/containers/{{properCase name}}/reducer.js',
         templateFile: './container/reducer.js.hbs',
         abortOnFail: true,
       });
@@ -176,7 +184,7 @@ module.exports = {
     }
 
     // Sagas
-    if (data.wantSaga) {
+    if (data.wantThunk) {
       actions.push({
         type: 'add',
         path: '../../app/containers/{{properCase name}}/actions/async.js',
@@ -188,7 +196,7 @@ module.exports = {
     if (data.wantLoadable) {
       actions.push({
         type: 'add',
-        path: '../../app/containers/{{properCase name}}/components/Loadable.js',
+        path: '../../app/containers/{{properCase name}}/Loadable.js',
         templateFile: './component/loadable.js.hbs',
         abortOnFail: true,
       });

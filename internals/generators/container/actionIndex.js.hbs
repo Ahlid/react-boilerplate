@@ -1,0 +1,8 @@
+import syncActions from './sync';
+{{#if wantThunk}}
+import asyncActions from './async';
+
+export default  {...asyncActions, ...syncActions };
+{{else}}
+export default  syncActions;
+{{/if}}
